@@ -133,17 +133,30 @@ nav ul {
   top: 100%;
   right: 0;
   background-color: #333;
-  padding: 1rem;
-  width: 300px;
+  width: 400px; /* Increased width */
   z-index: 1;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #444;
+  border-radius: 5px 5px 0 0;
+}
+
+.cart-footer {
+  background-color: #444;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0 5px 5px;
 }
 
 .cart-dropdown-close {
-  position: absolute;
-  right: 5px;
-  top: 5px;
   font-size: 1.5rem;
   color: #fff;
   background: none;
@@ -152,19 +165,33 @@ nav ul {
 }
 
 .cart-items {
-  list-style-type: none;
-  padding: 0;
-  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  max-height: 50vh; /* Adjust the max height of the items list */
+  overflow-y: auto; /* Enable vertical scrolling */
+  padding: 1rem;
+}
+
+.cart-item:hover {
+  background-color: #444;
 }
 
 .cart-item {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
+  width: 100%; /* Make each item span the entire width of the cart dropdown */
+  text-decoration: none;
+  padding: 0.5rem; /* Add padding */
+  box-sizing: border-box; /* Adjust the box sizing to include padding */
+}
+
+.cart-item:last-child {
+  border-bottom: none;
 }
 
 .cart-item-image {
-  width: 50px;
+  max-width: 100px;
   height: auto;
   object-fit: cover;
   margin-right: 1rem;
@@ -173,11 +200,20 @@ nav ul {
 .cart-item-info {
   flex-grow: 1;
   text-align: left;
-  margin-right: 1rem;
+  display: flex;
+  justify-content: space-between; /* Adjust the layout of the item details and price */
+  width: 100%; /* Make the item-info span the entire width */
+}
+
+.cart-item-details p {
+  margin-bottom: 0.05rem; /* Reduce the margin-bottom further */
+  line-height: 1; /* Adjust the line-height to reduce space between lines */
 }
 
 .cart-item-price {
   color: #fff;
+  text-align: right;
+  white-space: nowrap;
 }
 
 .cart-total {
