@@ -9,7 +9,7 @@ const ItemCard = ({ item, addToCart }) => {
         <img
           src={`${process.env.PUBLIC_URL}/${item.image}`}
           alt={item.name}
-          style={{ width: '100%', height: 'auto', objectFit: 'contain', maxHeight: '150px' }}
+          style={{ width: '100%', height: 'auto', objectFit: 'contain', maxHeight: '120px', borderRadius: '4px' }}
         />
       </Link>
       <h2>${item.price}</h2>

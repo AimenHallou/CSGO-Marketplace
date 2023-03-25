@@ -11,7 +11,7 @@ body {
 
 nav {
   background-color: #333;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 nav a {
@@ -46,12 +46,41 @@ nav ul {
 
 .item-card {
   border: 1px solid #444;
+  background-color: #2a2a2a;
   padding: 1rem;
   margin-bottom: 1rem;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-  width: 200px;
+  width: 150px;
+  border-radius: 4px;
+  text-align: left;
+}
+
+.item-card h2 {
+  color: #4caf50;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+}
+
+.item-card p {
+  margin-top: 0.15rem;
+  margin-bottom: 0.15rem;
+}
+
+.item-card button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 8px 16px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 8px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 100%;
 }
 
 .items-container {
