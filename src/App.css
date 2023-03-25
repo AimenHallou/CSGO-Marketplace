@@ -18,7 +18,9 @@ nav a {
   color: #fff;
   text-decoration: none;
   margin-right: 1rem;
+  margin-left: 1rem;
 }
+
 
 nav ul {
   display: flex;
@@ -26,6 +28,10 @@ nav ul {
   justify-content: space-between;
   align-items: center;
   padding: 0;
+}
+
+.nav-cart {
+  position: relative;
 }
 
 .search-bar {
@@ -120,4 +126,61 @@ nav ul {
   margin-bottom: 20px;
   color: #fff;
   text-decoration: none;
+}
+
+.cart-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #333;
+  padding: 1rem;
+  width: 300px;
+  z-index: 1;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.cart-dropdown-close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 1.5rem;
+  color: #fff;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cart-items {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.cart-item-image {
+  width: 50px;
+  height: auto;
+  object-fit: cover;
+  margin-right: 1rem;
+}
+
+.cart-item-info {
+  flex-grow: 1;
+  text-align: left;
+  margin-right: 1rem;
+}
+
+.cart-item-price {
+  color: #fff;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
 }

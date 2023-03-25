@@ -18,7 +18,7 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <Navbar />
+        <Navbar cartItems={cartItems} />
         <Routes>
           <Route path="/" element={<Marketplace addToCart={addToCart} />} />
           <Route path="/signin" element={<Login />} />
