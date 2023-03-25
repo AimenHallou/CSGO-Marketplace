@@ -23,14 +23,33 @@ nav a {
 nav ul {
   display: flex;
   list-style-type: none;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
   padding: 0;
+}
+
+.search-bar {
+  flex-grow: 1;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.search-bar input {
+  width: 100%;
+  background-color: #444;
+  color: #fff;
+  border: 1px solid #555;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  outline: none;
 }
 
 .item-card {
   border: 1px solid #444;
   padding: 1rem;
   margin-bottom: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   width: 200px;
   text-align: center;
 }
@@ -38,13 +57,22 @@ nav ul {
 .items-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .item-detail {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.item-detail-left {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+.item-detail-right {
+  flex: 1;
 }
 
 .item-detail img {

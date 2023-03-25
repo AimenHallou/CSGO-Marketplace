@@ -6,13 +6,28 @@ const Navbar = () => {
     <nav>
       <ul>
         <li>
-          <Link to="/login">Login</Link>
+          <Link to="/">
+            <img
+              src={`${process.env.PUBLIC_URL}/logo.png`}
+              alt="Logo"
+              style={{ height: '40px', marginRight: '1rem' }}
+            />
+          </Link>
         </li>
-        <li>
-          <Link to="/register">Register</Link>
+        <li className="search-bar">
+          <input
+            type="search"
+            placeholder="Search items..."
+          />
         </li>
         <li>
           <Link to="/cart">Cart</Link>
+        </li>
+        <li>
+          <Link to="/signin">Sign In</Link>
+        </li>
+        <li>
+          <Link to="/signup">Sign Up</Link>
         </li>
       </ul>
     </nav>
