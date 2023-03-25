@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-const Navbar = ({ cartItems }) => {
+const Navbar = ({ cartItems, removeFromCart, clearCart }) => {
   const [showCart, setShowCart] = useState(false);
   const cartLength = cartItems ? cartItems.length : 0;
 
@@ -31,7 +31,14 @@ const Navbar = ({ cartItems }) => {
           <span onClick={toggleCart} style={{ cursor: 'pointer', marginRight: '1rem' }}>
             <FontAwesomeIcon icon={faShoppingCart} /> ({cartLength})
           </span>
-          {showCart && <CartDropdown cartItems={cartItems} closeCart={() => setShowCart(false)} />}
+          {showCart && (
+            <CartDropdown
+              cartItems={cartItems}
+              closeCart={() => setShowCart(false)}
+              removeFromCart={removeFromCart}
+              clearCart={clearCart}
+            />
+          )}
         </li>
         <li>
           <Link to="/signin">Sign In</Link>
