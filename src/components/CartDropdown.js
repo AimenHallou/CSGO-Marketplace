@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const CartDropdown = ({
   cartItems = [],
@@ -61,7 +62,7 @@ const CartDropdown = ({
                   className="remove-item"
                   onClick={() => removeFromCart(item.id)}
                 >
-                  &times;
+                <FontAwesomeIcon icon={faTrash} />
                 </button>
               </div>
             </div>

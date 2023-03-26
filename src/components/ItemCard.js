@@ -16,7 +16,7 @@ const ItemCard = ({ item, addToCart }) => {
       <p>{item.type}</p>
       <p>{item.skin}</p>
       <p>{item.rarity}</p>
-      <p>Float: {item.floatValue.toFixed(3)}</p>
+      <p>{item.floatValue.toFixed(3)}</p>
       <button onClick={() => addToCart(item)}>Add to Cart</button>
     </div>
   );

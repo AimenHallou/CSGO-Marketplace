@@ -20,7 +20,6 @@ const ItemDetail = () => {
             maxHeight: '300px',
           }}
         />
-        <p>{item.rarity}</p>
       </div>
       <div className="item-detail-right">
         <h2>{item.type}</h2>
