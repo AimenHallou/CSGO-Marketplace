@@ -1,7 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-const ItemCard = ({ item, addToCart }) => {
+const ItemCard = ({ item, addToCart, isLoggedIn }) => {
+    const navigate = useNavigate();
+
+    const handleAddToCart = () => {
+      if (isLoggedIn) {
+        addToCart(item);
+      } else {
+        navigate('/signin');
+      }
+    };
   return (
     <div className="item-card">
       <p>{item.itemDuration}</p>
@@ -17,7 +26,7 @@ const ItemCard = ({ item, addToCart }) => {
       <p>{item.skin}</p>
       <p>{item.rarity}</p>
       <p>{item.floatValue.toFixed(3)}</p>
-      <button onClick={() => addToCart(item)}>Add to Cart</button>
+      <button onClick={handleAddToCart}>Add to Cart</button>
     </div>
   );
 };
