@@ -8,6 +8,7 @@ const CartDropdown = ({
   closeCart,
   removeFromCart,
   clearCart,
+  cartIconRef,
 }) => {
   const totalPrice = cartItems.reduce((sum, item) => sum + item.price, 0);
   const dropdownRef = useRef();
@@ -15,16 +16,20 @@ const CartDropdown = ({
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        !cartIconRef.current.contains(event.target)
+      ) {
         closeCart();
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [closeCart]);
+  }, [closeCart, cartIconRef]);
 
   const viewCart = () => {
     closeCart();

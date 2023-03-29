@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
@@ -6,6 +6,8 @@ import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import CartDropdown from './CartDropdown';
 
 const Navbar = ({ cartItems, removeFromCart, clearCart }) => {
+    const cartIconRef = useRef();
+
     const [showCart, setShowCart] = useState(false);
     const cartLength = cartItems ? cartItems.length : 0;
 
@@ -13,7 +15,6 @@ const Navbar = ({ cartItems, removeFromCart, clearCart }) => {
     const [loadingAuthState, setLoadingAuthState] = useState(true);
 
     const navigate = useNavigate();
-
 
     useEffect(() => {
         const auth = getAuth();
@@ -36,9 +37,9 @@ const Navbar = ({ cartItems, removeFromCart, clearCart }) => {
         try {
             await signOut(auth);
             setUser(null);
+            clearCart();
             navigate('/');
         } catch (error) {
-            console.error("Error signing out:", error);
             console.error("Error signing out:", error);
         }
     };
@@ -58,19 +59,26 @@ const Navbar = ({ cartItems, removeFromCart, clearCart }) => {
                 <li className="search-bar">
                     <input type="search" placeholder="Search items..." />
                 </li>
-                <li className="nav-cart">
-                    <span onClick={toggleCart} style={{ cursor: 'pointer', marginRight: '1rem' }}>
-                        <FontAwesomeIcon icon={faShoppingCart} /> ({cartLength})
-                    </span>
-                    {showCart && (
-                        <CartDropdown
-                            cartItems={cartItems}
-                            closeCart={() => setShowCart(false)}
-                            removeFromCart={removeFromCart}
-                            clearCart={clearCart}
-                        />
-                    )}
-                </li>
+                {!loadingAuthState && user && (
+                    <li className="nav-cart">
+                        <span
+                            ref={cartIconRef}
+                            onClick={toggleCart}
+                            style={{ cursor: "pointer", marginRight: "1rem" }}
+                        >
+                            <FontAwesomeIcon icon={faShoppingCart} /> ({cartLength})
+                        </span>
+                        {showCart && (
+                            <CartDropdown
+                                cartItems={cartItems}
+                                closeCart={() => setShowCart(false)}
+                                removeFromCart={removeFromCart}
+                                clearCart={clearCart}
+                                cartIconRef={cartIconRef}
+                            />
+                        )}
+                    </li>
+                )}
                 {!loadingAuthState && (
                     <>
                         {!user ? (
